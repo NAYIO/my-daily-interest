@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>点击触发事件尝试</title>
+    </head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <body>
+        <div id="click-example">
+            <button
+            @keyup.enter="addSum"
+            >点击触发</button>>
+        </div>
+    </body>
+    <script>
+        var example=new Vue({
+            el: "#click-example",
+            data: {
+                count: 0
+            },
+            methods: {
+                addSum: function(event){
+                    alert(this.count++)
+                    if(event){
+                        alert(event.target.tagName)
+                    }
+                }
+            }
+        })
+    </script>
+</html>

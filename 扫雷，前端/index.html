@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="game.css">
+    <title>扫雷啦~</title>
+  </head>
+  <body>
+    <h1>扫雷小游戏</h1>
+    <div class="allPart">
+      <div class="set" onclick="setPageOut()">
+          <img class="setImg" src="photo/set.png"/>
+        </div>
+        <div class="replay"  onclick="setNum()">
+          <span id="default" class="default-emoji" >
+              😀
+          </span>
+        </div>
+      <div class="center" id="centerPart" style="display:inline-block">
+        <div id="map">
+        </div>
+        <div class="flex-result">
+          <div class="part" id="rest">REST
+            <span class="develop" id="restNum"></span>
+          </div>
+          <div class="part" id="time">TIME
+              <span class="develop" id="spend"></span>
+          </div>
+          <div class="part" id="click">CLICK
+              <span class="develop" id="count">0</span>
+          </div>
+        </div>
+      </div>
+      <div class="setPage" id="setPage">
+        <div class="flexSet">
+          <div style="display:inline-block"><input id="col" class="flex-cell" type="number" value="10" min="5" max="100"/></div>
+          <div class="vs" style="display:inline-block">*</div>
+          <div style="display:inline-block"><input id="row" class="flex-cell" type="number" value="10" min="5" max="100"/></div>
+          <br>
+        </div>
+        <div class="prepend-input">
+          <div class="dilei" >💣</div>
+          <input id="dileiNum" type="number" value="10" min="5" max="10000"/>
+        </div>
+        <div class="saveReplay"  onclick="setPageOut()">SAVE AND RESTART</div>
+      </div>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>

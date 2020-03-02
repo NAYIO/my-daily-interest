@@ -1,0 +1,104 @@
+body{
+    text-align: center;
+}
+h1,div,span,input{
+    box-sizing: border-box;
+}
+.allPart{
+    position: relative;
+    display: inline-block;
+    margin: 0 auto;
+    background-color: rgb(165, 214, 214);
+    padding: 25px;
+}
+
+.set{
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #ece0b0;
+    position: absolute;
+    right: -13px;
+    top: -13px;
+}
+.setImg{
+    width: 100%;
+    height: 100%;
+}
+
+.replay{
+    width: 100%;
+    height: 50px;
+    background-color: #a0b3ad;
+    /* margin: 20px 15px -5px 15px; */
+    padding: 13px;
+    border-radius: 5px;
+}
+
+.center{
+    padding: 10px;
+}
+#map{
+    margin-top: 15px;
+}
+.smaGe{
+    width: 35px;
+    border-radius: 5px;
+    height: 35px;
+    background-color: rgb(125, 142, 157);
+    margin: 2px 1px 2px 1px;
+    display: inline-block;
+    padding: 5px;
+    
+}
+
+
+
+.flex-result{
+    width: 100%;
+    height: 60px;
+    margin: 10px auto;
+    display: flex;
+    background-color: rgb(165, 214, 214);
+}
+.part{
+    background-color: transparent;
+    width: 33.3%;
+    padding: 4px;
+    margin: 10px;
+    display: inline-block;
+}
+
+.setPage{
+    display: none;
+    padding: 10px;
+    background-color: azure;
+}
+.prepend-input{
+    position: relative;
+    left: 4px;
+    margin: 10px auto;
+    text-align: left;
+}
+#dileiNum{
+    display: inline-block;
+    box-sizing: border-box;
+    padding-left: 30px;
+    width: 96%;
+}
+.dilei{
+    position: absolute;
+    padding: -4px;
+    margin: 2px;
+    border-right: 1px solid rgb(116, 113, 113);
+}
+
+.saveReplay{
+    background-color: #c2d0e3;
+    margin: 2px;
+    padding: 5px;
+    border-radius: 5px;
+}
+.develop{
+    display: block;
+}

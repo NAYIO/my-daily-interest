@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>A Todo List</title>
+    </head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        body{
+            width: 100%;
+        }
+        button{
+            background-color: antiquewhite;
+            color: black;
+            font-size: 15px;
+            border-radius: 50%;
+            border: 0;
+            width: 40px;
+            height: 40px;
+            margin: 2px;
+            outline: none;
+        }
+        button:focus{
+            outline: none;
+            border-color: transparent;
+            box-shadow: none;
+        }
+        .normal{
+            background-color: transparent;
+        }
+        .finished{
+            background-color: rgb(110, 110, 106);
+        }
+        ul{
+            min-height: 300px;
+            max-height: 500px;
+            padding: 0px 0px 50px 0px;
+            margin: 0px;
+            overflow-y: overlay;
+        }
+        li{
+            list-style: none;
+            position: relative;
+            width: 500px;
+            height: 50px;
+            line-height: 50px;
+            border: 1px solid black;
+            margin: 10px 0;
+        }
+        input{
+            border: none;
+            border-bottom: 1px solid black;
+        }
+        input:focus{
+            outline: none;
+            box-shadow: none;
+        }
+        .add{
+            position: relative;
+            width: 500px;
+            height: 50px;
+            line-height: 50px;
+            border: 1px solid black;
+            margin: 10px 0;
+        }
+        .add-new{
+            padding: 10px;
+        }
+        #todo-list{
+            margin: 0 auto;
+            display: inline-block;
+            padding: 10px 30px 10px 30px;
+            border: 1px solid black;
+        }
+        .header h2{
+            height: 50px;
+            line-height: 50px;
+            margin: 0 auto;
+            width: 500px;
+            text-align: center;
+        }
+        .normal{
+            background-color: rgb(137, 147, 155);
+        }
+        .green{
+            background-color: rgb(12, 247, 51);
+        }
+        .blacker{
+            background-color: rgb(158, 156, 153);
+        }
+        .right{
+            position: absolute;
+            left: 450px;
+            top: 4px;
+            
+        }
+        #list-footer{
+            width: 500px;
+            height: 100px;
+            padding: 0px;
+        }
+        .footer-img{
+            float: left;
+            margin: 7px 43px;
+            width: 80px;
+            height: 80px;
+        }
+    </style>
+    <body>
+        <div id="todo-list">
+            <div class="header" id="list-header">
+                <h2>**TODO LIST**</h2>
+            </div>
+            <div class="add"><label class="add-new" for="new-todo">Add: </label>
+                <input v-model="addNewItem"
+                id="new-todo"
+                placeholder="eg:Wash the dishes"
+                >
+                <button @click="addNewList" class="right">✚</button>
+            </div>
+            <ul id="list-content">
+                <li class="single-item"
+                v-for="(todo,index) in todoitems"
+                :key="todo.id"
+                :message="todo.message"
+                :class="{blacker:todo.hasChange}"
+                >
+                    <button v-bind:class="{green:todo.hasChange,normal}"  @click="finished(index,$event)">✔</button>
+                    <lable name="todo.message">{{todo.message}}</lable>
+                    <button class="right undeleted" @click="todoitems.splice(index,1)">✖</button>
+                </li>
+            </ul>
+            <div id="list-footer">
+                <div
+                v-for="item in selections"
+                :key="item.id"
+                :item="item"
+                >
+                <img :id="item.id"
+                :src="item.url"
+                class="footer-img"
+                >
+                </div>
+            </div>
+        </div>
+    </body>
+    <script>
+        var todoContent=new Vue({
+            el: "#todo-list",
+            
+            data: {
+                normal:true,
+                addNewItem:'',
+                todoitems:[
+                    {
+                        id: 1,message: "Do the Homework",hasChange:false
+                    },
+                    {
+                        id: 2,message: "Turn out the rubbish",hasChange:false
+                    },
+                    {
+                        id: 3,message: "Take some exercise",hasChange:false
+                    },
+                    {
+                        id: 4,message: "Cook the dishes",hasChange:false
+                    }
+                ],
+                itemIndex:5,
+
+                selections:[
+                    {
+                        url:'photo/home.png',id:'home'
+                    },
+                    {
+                        url:'photo/history.png',id:'history'
+                    },
+                    {
+                        url:'photo/person.png',id:'person'
+                    }
+                ]
+            },
+            methods:{
+                finished: function(index,event){
+                    console.log(index);
+                    this.todoitems[index].hasChange=(event.target.className==="normal")?true:false;
+                },
+                addNewList:function(){
+                    this.todoitems.push({
+                        id:this.itemIndex++,message: this.addNewItem,hasChange:false
+                    })
+                    this.addNewItem=''
+                }
+            }
+        })
+    </script>
+</html>

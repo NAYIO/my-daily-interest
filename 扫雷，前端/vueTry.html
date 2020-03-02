@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <body>
+        <div id="todoList">
+            <form v-on:submit.prevent="addNewList">
+                <label for="new-todo">Add A Todo</label>
+                <input 
+                v-model="newTodoText"
+                id="new-todo"
+                placeholder="eg:Do the homework"
+                >
+                <button>Add</button>
+            </form>
+            <ul>
+                <li
+                is="todo-item"
+                v-for="(item,index) in items"
+                :key="item.id"
+                :title="item.title"
+                @remove="items.splice(index,1)"
+                >
+                </li>
+            </ul>
+        </div>
+    </body>
+    <script>
+        Vue.component('todo-item',{
+            template:'<li>\
+             {{title}}   \
+               <button @click="$emit(\'remove\')">Remove</button> \
+                </li>',
+            props:['title']
+        })
+        var example = new Vue({
+            el: "#todoList",
+            data:{
+                newTodoText: '',
+                items:[
+                    {
+                        id: 1,
+                        title: 'Help my mom'
+                    },
+                    {
+                        id: 2,
+                        title: 'Help my father'
+                    },
+                    {
+                        id: 3,
+                        title: 'Throw the rabbish'
+                    }
+                    ] ,
+                nowIndex:4,
+                },
+            
+            methods:{
+                addNewList: function(){
+                    this.items.push({
+                        id: this.nowIndex++,
+                        title: this.newTodoText
+                    })
+                    this.newTodoText = ''
+                }
+            }    
+        })
+    </script>
+
+</html>
